@@ -1,0 +1,441 @@
+import 'course_models.dart';
+
+Lesson _lesson(
+  String id,
+  String title,
+  String summary,
+  String example,
+  List<String> topics,
+  String exercise,
+) => Lesson(
+  id: id,
+  title: title,
+  summary: summary,
+  example: example,
+  topics: topics,
+  exercise: exercise,
+);
+
+CourseModule _module(String title, String summary, List<Lesson> lessons) =>
+    CourseModule(title: title, summary: summary, lessons: lessons);
+
+final pythonCourseModules = <CourseModule>[
+  _module(
+    'Beginner 1: Python and the interpreter',
+    'Understand Python programs, statements, expressions, and the interactive interpreter.',
+    [
+      _lesson(
+        'python-introduction',
+        'Introduction to Python',
+        'Python is a general-purpose language used for automation, web services, data analysis, and machine learning. Programs are made from readable statements that operate on values.',
+        'print("Hello, SkillVerse")\nprint(2 + 3)',
+        ['Interpreter', 'Statements', 'Expressions'],
+        'Write a program that prints your name and calculates the number of days in a week.',
+      ),
+      _lesson(
+        'python-first-program',
+        'Running a Python program',
+        'A source file conventionally uses the .py extension. The interpreter executes statements in order; syntax errors are reported before the invalid statement can run.',
+        'python app.py\n# app.py\nmessage = "Ready to learn"\nprint(message)',
+        ['Source files', 'Execution order', 'Syntax errors'],
+        'Save a short script, run it from a terminal, and deliberately correct a misspelled function name.',
+      ),
+    ],
+  ),
+  _module(
+    'Beginner 2: Installation and environment setup',
+    'Install Python, choose an editor, and isolate project dependencies.',
+    [
+      _lesson(
+        'python-installation',
+        'Installing Python and choosing an IDE',
+        'Use a supported Python 3 release and verify the interpreter from a terminal. Editors and notebooks provide different workflows, but the interpreter remains the program that executes the code.',
+        'python --version\npython -c "print(2 + 2)"',
+        ['Python 3', 'Terminal', 'IDE', 'Notebook'],
+        'Verify the interpreter path and version, then run one script from both your editor and terminal.',
+      ),
+      _lesson(
+        'python-virtual-environment',
+        'Virtual environments and pip',
+        'A virtual environment isolates installed packages for one project. Install dependencies into the active environment and record them so another developer can reproduce the setup.',
+        'python -m venv .venv\n.venv\\Scripts\\activate\npython -m pip install requests\npython -m pip freeze',
+        ['venv', 'pip', 'Dependencies'],
+        'Create a project environment, install one package, and save its requirements.',
+      ),
+    ],
+  ),
+  _module(
+    'Beginner 3: Variables and data types',
+    'Name values, inspect their types, and convert between common built-in types.',
+    [
+      _lesson(
+        'python-variables',
+        'Variables and assignment',
+        'A variable name refers to an object. Assignment binds a name; it does not declare a fixed type, so later assignment may bind the name to a value of another type.',
+        'learner = "Mina"\nscore = 4\nscore += 1\nprint(learner, score)',
+        ['Names', 'Assignment', 'Rebinding'],
+        'Store a learner name and three assessment scores, then calculate and print their total.',
+      ),
+      _lesson(
+        'python-types',
+        'Numeric, string, boolean, and None values',
+        'Python includes integers, floating-point values, strings, booleans, and the singleton None. Inspect a value with type and convert only when the conversion is meaningful.',
+        'count = int("12")\nratio = float("0.75")\nactive = count > 0\nmissing = None',
+        ['int', 'float', 'str', 'bool', 'None'],
+        'Read two numeric strings, convert them safely, and print the resulting types.',
+      ),
+    ],
+  ),
+  _module(
+    'Beginner 4: Operators and expressions',
+    'Use arithmetic, comparison, logical, membership, and assignment operators.',
+    [
+      _lesson(
+        'python-arithmetic-operators',
+        'Arithmetic and precedence',
+        'Python supports arithmetic operators including floor division and remainder. Parentheses make intended grouping explicit and reduce mistakes in longer expressions.',
+        'total = 17 + 5 * 2\nquotient = 17 // 5\nremainder = 17 % 5\nprint(total, quotient, remainder)',
+        ['Arithmetic', 'Precedence', 'Floor division', 'Remainder'],
+        'Calculate a shopping subtotal, tax, and final price, using parentheses to show the order.',
+      ),
+      _lesson(
+        'python-comparison-logic',
+        'Comparison and logical operators',
+        'Comparisons produce booleans. The and, or, and not operators combine conditions; chained comparisons can express ranges clearly.',
+        'age = 21\neligible = 18 <= age < 65\nhas_id = True\nprint(eligible and has_id)',
+        ['Comparisons', 'and', 'or', 'not', 'Membership'],
+        'Write a condition for a discount available to members under 18 or at least 60.',
+      ),
+    ],
+  ),
+  _module(
+    'Beginner 5: Conditional statements',
+    'Branch on boolean conditions and handle multiple cases clearly.',
+    [
+      _lesson(
+        'python-if-else',
+        'if, elif, and else',
+        'An if statement runs a block when its condition is true. elif checks another condition only after earlier conditions fail; else handles the remaining cases.',
+        'score = 82\nif score >= 90:\n    grade = "A"\nelif score >= 70:\n    grade = "B"\nelse:\n    grade = "C"',
+        ['if', 'elif', 'else', 'Indentation'],
+        'Classify a temperature as cold, mild, or hot and include boundary values in your checks.',
+      ),
+      _lesson(
+        'python-conditional-design',
+        'Nested conditions and guard clauses',
+        'Prefer clear conditions and early guard clauses over deeply nested branches. Test the boundary and invalid-input cases, not only the common path.',
+        'def divide(a, b):\n    if b == 0:\n        return None\n    return a / b',
+        ['Nested if', 'Guard clause', 'Boundary cases'],
+        'Write a shipping-cost function that rejects negative weights and handles a free-shipping threshold.',
+      ),
+    ],
+  ),
+  _module(
+    'Beginner 6: Loops and iteration',
+    'Repeat work with for and while loops and control iteration safely.',
+    [
+      _lesson(
+        'python-for-loops',
+        'for loops and range',
+        'A for loop iterates over items from an iterable. range produces an arithmetic sequence of integers and excludes its stop value.',
+        'for number in range(1, 4):\n    print(number)\n\nfor name in ["Ava", "Noah"]:\n    print(name)',
+        ['for', 'range', 'Iterable'],
+        'Use a loop to total the even numbers from 1 through 100.',
+      ),
+      _lesson(
+        'python-while-loops',
+        'while, break, and continue',
+        'A while loop repeats as long as its condition is true. Update loop state to guarantee progress; break exits and continue skips to the next iteration.',
+        'remaining = 3\nwhile remaining > 0:\n    print(remaining)\n    remaining -= 1',
+        ['while', 'break', 'continue', 'Loop state'],
+        'Build a number-guessing loop with a maximum attempt count and a clear exit condition.',
+      ),
+    ],
+  ),
+  _module(
+    'Intermediate 1: Strings',
+    'Index, slice, format, and transform immutable text values.',
+    [
+      _lesson(
+        'python-string-basics',
+        'String indexing and slicing',
+        'Strings are immutable sequences of Unicode characters. Indexing selects one position; slicing selects a half-open range and supports a step.',
+        'word = "SkillVerse"\nprint(word[0])\nprint(word[0:5])\nprint(word[::-1])',
+        ['Immutability', 'Indexing', 'Slicing'],
+        'Extract a file extension from a filename and safely handle a name with no extension.',
+      ),
+      _lesson(
+        'python-string-methods',
+        'Formatting and string methods',
+        'Methods such as strip, split, join, and replace return useful transformed strings. f-strings insert values into readable formatted output.',
+        'raw = "  python,sql  "\nitems = raw.strip().split(",")\nprint(" | ".join(item.upper() for item in items))',
+        ['strip', 'split', 'join', 'replace', 'f-string'],
+        'Normalize a comma-separated list of tags and print each tag with its position.',
+      ),
+    ],
+  ),
+  _module(
+    'Intermediate 2: Lists and tuples',
+    'Choose mutable lists or fixed tuples and use common sequence operations.',
+    [
+      _lesson(
+        'python-lists',
+        'Creating and updating lists',
+        'Lists are ordered and mutable. Append adds one item, extend adds items from an iterable, and slicing creates a shallow list of selected elements.',
+        'scores = [72, 81]\nscores.append(90)\nscores.extend([88, 95])\nprint(scores[1:4])',
+        ['List literals', 'append', 'extend', 'Slicing'],
+        'Maintain a list of quiz scores and compute its minimum, maximum, and average.',
+      ),
+      _lesson(
+        'python-tuples',
+        'Tuples, unpacking, and sequence patterns',
+        'Tuples are immutable sequences often used for fixed records and multiple return values. Unpacking assigns sequence elements to names in a single statement.',
+        'point = (4, 7)\nx, y = point\nlow, *middle, high = [2, 4, 6, 8]\nprint(x, y, middle)',
+        ['Tuple', 'Unpacking', 'Multiple assignment'],
+        'Return a pair containing the minimum and maximum from a list of values.',
+      ),
+    ],
+  ),
+  _module(
+    'Intermediate 3: Sets and dictionaries',
+    'Model unique membership and key-value lookup with hash-based collections.',
+    [
+      _lesson(
+        'python-sets',
+        'Sets and set operations',
+        'A set stores unique hashable values. Union, intersection, and difference answer common membership and comparison questions efficiently.',
+        'required = {"python", "sql"}\ncompleted = {"sql", "git"}\nprint(required & completed)\nprint(required - completed)',
+        ['Uniqueness', 'Union', 'Intersection', 'Difference'],
+        'Compare two course rosters and report shared learners and learners unique to each roster.',
+      ),
+      _lesson(
+        'python-dictionaries',
+        'Dictionaries and safe lookup',
+        'Dictionaries map unique hashable keys to values. Use get for optional keys, items to iterate over pairs, and a clear key policy for missing data.',
+        'prices = {"tea": 3, "coffee": 4}\nprices["juice"] = 5\nfor item, price in prices.items():\n    print(item, price)',
+        ['Keys', 'Values', 'items', 'get'],
+        'Count word frequencies in a sentence using a dictionary and case-insensitive keys.',
+      ),
+    ],
+  ),
+  _module(
+    'Intermediate 4: Functions',
+    'Design functions with clear inputs, return values, and scope.',
+    [
+      _lesson(
+        'python-function-basics',
+        'Defining functions and returning values',
+        'A function packages reusable behavior. Parameters describe inputs, return sends a result to the caller, and a docstring can state the contract.',
+        'def mean(values):\n    """Return the arithmetic mean of values."""\n    return sum(values) / len(values)\n\nprint(mean([2, 4, 6]))',
+        ['def', 'Parameters', 'Return', 'Docstrings'],
+        'Refactor a repeated calculation into a function and define behavior for an empty input.',
+      ),
+      _lesson(
+        'python-function-arguments',
+        'Default, keyword, and variable arguments',
+        'Default values are evaluated when the function is defined, so avoid mutable defaults. Keyword arguments improve readability; *args and **kwargs collect variable arguments.',
+        'def greet(name, prefix="Hello"):\n    return f"{prefix}, {name}"\n\nprint(greet(name="Ava"))',
+        ['Default arguments', 'Keyword arguments', '*args', '**kwargs'],
+        'Create a report function with a required title and optional formatting keyword.',
+      ),
+    ],
+  ),
+  _module(
+    'Intermediate 5: Lambdas, recursion, and functional tools',
+    'Use small anonymous functions and solve naturally recursive problems.',
+    [
+      _lesson(
+        'python-lambda',
+        'Lambda functions and sorting',
+        'A lambda is a small expression that creates an anonymous function. Use it for short callbacks, such as a sorting key; prefer def for complex logic.',
+        'records = [("Mina", 82), ("Ava", 91)]\nordered = sorted(records, key=lambda row: row[1])\nprint(ordered)',
+        ['lambda', 'key function', 'sorted'],
+        'Sort course records first by completion percentage and then by learner name.',
+      ),
+      _lesson(
+        'python-recursion',
+        'Recursion and base cases',
+        'A recursive function calls itself on a smaller problem. Every valid recursive path needs a base case, and iterative solutions are preferable when recursion depth can grow large.',
+        'def factorial(n):\n    if n < 0:\n        raise ValueError("n must be non-negative")\n    return 1 if n < 2 else n * factorial(n - 1)',
+        ['Base case', 'Recursive step', 'Recursion depth'],
+        'Write a recursive sum for a nested list and compare its behavior with an iterative solution.',
+      ),
+    ],
+  ),
+  _module(
+    'Advanced 1: Modules and packages',
+    'Organize reusable code and manage package imports.',
+    [
+      _lesson(
+        'python-modules',
+        'Modules, imports, and main guards',
+        'A Python module is a file that can be imported. Keep reusable definitions separate from command-line behavior and use the main guard to prevent accidental execution on import.',
+        'def normalize(value):\n    return value.strip().lower()\n\nif __name__ == "__main__":\n    print(normalize(" SQL "))',
+        ['Modules', 'Imports', '__name__', 'Main guard'],
+        'Split a small script into a reusable module and a command-line entry point.',
+      ),
+      _lesson(
+        'python-packages',
+        'Packages and dependency management',
+        'Packages group modules under a namespace. Use a project environment, explicit dependency versions when needed, and a documented installation process.',
+        'from pathlib import Path\n\nproject_root = Path(__file__).parent\nprint(project_root)',
+        ['Packages', 'Package layout', 'Dependencies'],
+        'Create a package with two modules and document how to install its dependencies.',
+      ),
+    ],
+  ),
+  _module(
+    'Advanced 2: Files and exceptions',
+    'Read and write files safely and handle expected failures explicitly.',
+    [
+      _lesson(
+        'python-file-handling',
+        'Files and context managers',
+        'Use with to ensure files are closed even when processing fails. Choose text encoding explicitly and distinguish read, write, and append modes.',
+        'from pathlib import Path\n\npath = Path("notes.txt")\nwith path.open("w", encoding="utf-8") as file:\n    file.write("Practice every day\\n")',
+        ['open', 'with', 'encoding', 'Path'],
+        'Read a UTF-8 CSV-like text file and count non-empty lines without loading it all at once.',
+      ),
+      _lesson(
+        'python-exceptions',
+        'Exception handling and custom errors',
+        'Catch only errors you can handle. Use else for successful try completion, finally for cleanup, and raise a suitable exception when a contract is violated.',
+        'try:\n    age = int("21")\nexcept ValueError as error:\n    print(f"Invalid age: {error}")\nelse:\n    print(age)',
+        ['try', 'except', 'else', 'finally', 'raise'],
+        'Validate a numeric input and report malformed values without hiding unrelated programming errors.',
+      ),
+    ],
+  ),
+  _module(
+    'Advanced 3: Object-oriented programming',
+    'Model state and behavior with classes, objects, and controlled interfaces.',
+    [
+      _lesson(
+        'python-classes-objects',
+        'Classes, objects, and constructors',
+        'A class defines behavior and state; an instance is an object created from that class. __init__ initializes instance attributes, while methods operate on the instance.',
+        'class Course:\n    def __init__(self, title):\n        self.title = title\n\n    def describe(self):\n        return f"Course: {self.title}"',
+        ['class', 'object', '__init__', 'self'],
+        'Create a Course class with a title, duration, and a method that reports the course summary.',
+      ),
+      _lesson(
+        'python-encapsulation',
+        'Encapsulation and properties',
+        'Encapsulation keeps an object’s invariants behind a deliberate interface. Python conventions signal internal attributes with a leading underscore; properties can validate updates.',
+        'class Score:\n    def __init__(self, value):\n        self.value = value\n\n    @property\n    def percentage(self):\n        return self.value * 100',
+        ['Encapsulation', 'Properties', 'Invariants'],
+        'Add validation so a score can only be set between zero and the maximum score.',
+      ),
+    ],
+  ),
+  _module(
+    'Advanced 4: Inheritance and polymorphism',
+    'Reuse behavior carefully and rely on a common interface when possible.',
+    [
+      _lesson(
+        'python-inheritance',
+        'Inheritance and composition',
+        'Inheritance expresses a genuine subtype relationship and can reuse or specialize behavior. Composition is often simpler when one object merely needs another object’s service.',
+        'class TimedCourse:\n    def __init__(self, title, minutes):\n        self.title = title\n        self.minutes = minutes',
+        ['Inheritance', 'Composition', 'super'],
+        'Model a course with optional assessments using composition, then explain why it is preferable to an unrelated subclass.',
+      ),
+      _lesson(
+        'python-polymorphism',
+        'Polymorphism and protocols',
+        'Polymorphism lets different objects respond to the same operation. In Python, callers can often rely on supported behavior rather than require a specific class hierarchy.',
+        'def render_summary(item):\n    return item.summary()\n\nclass Lesson:\n    def summary(self):\n        return "Lesson content"',
+        ['Polymorphism', 'Duck typing', 'Protocols'],
+        'Create two report types with a shared summary method and render them through one function.',
+      ),
+    ],
+  ),
+  _module(
+    'Advanced 5: NumPy and numerical computing',
+    'Use NumPy arrays for typed, vectorized numerical operations.',
+    [
+      _lesson(
+        'python-numpy-arrays',
+        'NumPy arrays and vectorization',
+        'NumPy arrays store values in a homogeneous n-dimensional structure. Vectorized operations run over whole arrays and can be clearer and faster than Python-level element loops.',
+        'import numpy as np\n\nscores = np.array([72, 81, 90])\nscaled = scores / 100\nprint(scaled.mean())',
+        ['ndarray', 'dtype', 'Vectorization'],
+        'Normalize a numeric score array and calculate its mean without a Python loop.',
+      ),
+      _lesson(
+        'python-numpy-shapes',
+        'Array shapes, indexing, and broadcasting',
+        'Shape records an array’s dimensions. Broadcasting allows operations on compatible shapes without explicitly copying repeated values; incompatible dimensions raise an error.',
+        'import numpy as np\n\nvalues = np.array([[1, 2], [3, 4]])\ncolumn_offsets = np.array([10, 20])\nprint(values + column_offsets)',
+        ['Shape', 'Indexing', 'Broadcasting'],
+        'Represent three learners with two assessment scores and calculate per-assessment totals.',
+      ),
+    ],
+  ),
+  _module(
+    'Advanced 6: Pandas and data analysis',
+    'Load tabular data, inspect quality, transform columns, and summarize groups.',
+    [
+      _lesson(
+        'python-pandas-dataframes',
+        'Pandas Series and DataFrames',
+        'A Series is a labeled one-dimensional array; a DataFrame is a labeled table. Inspect shape, dtypes, missing values, and a sample before analysis.',
+        'import pandas as pd\n\ndf = pd.DataFrame({"learner": ["Ava", "Noah"], "score": [91, 84]})\nprint(df.head())\nprint(df.dtypes)',
+        ['Series', 'DataFrame', 'dtypes', 'head'],
+        'Load a small CSV, inspect its columns, and identify missing values and unexpected types.',
+      ),
+      _lesson(
+        'python-pandas-transform',
+        'Filtering, grouping, and missing data',
+        'Boolean masks filter rows. groupby aggregates categories; handle missing values based on their cause rather than replacing them blindly.',
+        'passed = df.loc[df["score"] >= 70]\nsummary = df.groupby("learner")["score"].mean()\nprint(passed, summary)',
+        ['Boolean masks', 'groupby', 'Missing values'],
+        'Group assessment results by course and report the mean plus the number of missing scores.',
+      ),
+    ],
+  ),
+  _module(
+    'Advanced 7: Matplotlib and data visualization',
+    'Select chart types that answer a question and label visual evidence clearly.',
+    [
+      _lesson(
+        'python-matplotlib',
+        'Plotting with Matplotlib',
+        'Matplotlib builds plots from data and provides control over titles, axes, legends, and layout. Choose a chart based on the type of comparison or relationship being studied.',
+        'import matplotlib.pyplot as plt\n\nmonths = [1, 2, 3]\nactive = [12, 18, 21]\nplt.plot(months, active, marker="o")\nplt.xlabel("Month")\nplt.ylabel("Active learners")\nplt.title("Learner growth")',
+        ['Line chart', 'Axes', 'Labels', 'Legend'],
+        'Plot a time series and add labels, units, a descriptive title, and a note about missing periods.',
+      ),
+      _lesson(
+        'python-visualization',
+        'Distribution and relationship charts',
+        'Histograms show numeric distributions, bar charts compare categories, and scatter plots show relationships between numeric variables. Check scales and avoid visual choices that exaggerate differences.',
+        'plt.scatter([2, 4, 6], [60, 75, 88])\nplt.xlabel("Practice sessions")\nplt.ylabel("Assessment score")\nplt.show()',
+        ['Histogram', 'Bar chart', 'Scatter plot', 'Scale'],
+        'Choose a chart for completion by course and explain why it answers the question better than a pie chart.',
+      ),
+    ],
+  ),
+  _module(
+    'Advanced 8: Projects and interview preparation',
+    'Combine Python skills into a small maintainable application and practice explaining trade-offs.',
+    [
+      _lesson(
+        'python-capstone',
+        'Capstone: learning progress analyzer',
+        'Build a command-line analyzer that reads learner records, validates input, summarizes completion and assessment results, and writes a report. Separate parsing, analysis, and output into testable functions.',
+        'def completion_rate(completed, total):\n    if total <= 0:\n        raise ValueError("total must be positive")\n    return completed / total',
+        ['Project structure', 'Validation', 'Testing', 'Reporting'],
+        'Implement the analyzer with a sample input file, unit tests, and documented assumptions about missing data.',
+      ),
+      _lesson(
+        'python-interview-review',
+        'Python interview questions and review',
+        'Be prepared to compare list and tuple behavior, explain mutability and hashability, describe generators and decorators, and discuss how exceptions and context managers protect program behavior.',
+        'def unique_words(text):\n    return {word.casefold() for word in text.split()}',
+        ['Mutability', 'Hashability', 'Generators', 'Exceptions', 'Complexity'],
+        'Answer three interview prompts with a concise definition, a code example, and one trade-off or edge case.',
+      ),
+    ],
+  ),
+];

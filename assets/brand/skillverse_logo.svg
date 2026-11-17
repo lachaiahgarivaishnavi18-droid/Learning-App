@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#06183d"/>
+      <stop offset="55%" stop-color="#0c3aa6"/>
+      <stop offset="100%" stop-color="#5f30e1"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#39c4ff"/>
+      <stop offset="100%" stop-color="#7641ff"/>
+    </linearGradient>
+  </defs>
+  <rect x="40" y="40" width="944" height="944" rx="190" fill="url(#bg)"/>
+  <path d="M250 315 L760 315 L700 470 L310 470 Z" fill="#f4f7ff"/>
+  <path d="M335 345 L660 345 L630 468 L370 468 Z" fill="#edf2ff"/>
+  <path d="M180 470 L845 470 L760 540 L260 540 Z" fill="#f7f9ff"/>
+  <rect x="500" y="470" width="38" height="180" rx="10" fill="#f6c544"/>
+  <path d="M540 470 L610 495 L540 520 Z" fill="#f6c544"/>
+  <path d="M150 600 L450 600 L520 760 L190 760 Z" fill="#ffffff"/>
+  <path d="M575 600 L885 600 L835 760 L510 760 Z" fill="#ffffff"/>
+  <path d="M210 610 L420 610 L458 758 L260 758 Z" fill="#8ad7ff" opacity="0.9"/>
+  <path d="M580 610 L790 610 L748 758 L560 758 Z" fill="#7a77ff" opacity="0.85"/>
+  <rect x="430" y="600" width="170" height="160" rx="18" fill="#edf2ff"/>
+  <circle cx="512" cy="473" r="120" fill="url(#ring)" opacity="0.78"/>
+  <path d="M468 410 L568 472 L468 535 Z" fill="#ffffff"/>
+  <path d="M692 264 C734 156, 900 132, 919 264" stroke="#f6c444" stroke-width="25" stroke-linecap="round" fill="none"/>
+  <path d="M700 160 L780 220 L700 280 L620 220 Z" fill="#f6c444"/>
+  <path d="M780 220 L892 256 L780 300 Z" fill="#f6c444" opacity="0.8"/>
+</svg>
